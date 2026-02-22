@@ -1,0 +1,221 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  color-scheme: light;
+  --km-pink: #efb1cb;
+  --km-bg: #fdf3ee;
+  --km-card: #ffffff;
+  --km-ink: #373838;
+  --km-border: #f4e1d8;
+  --km-yellow: #fff2b8;
+  --km-blue: #d9efff;
+  --km-green: #d9f6df;
+  --km-font-base: "ads-mambo", "ADS Mambo", "Avenir Next", "Trebuchet MS", "Segoe UI", "Helvetica Neue", Arial, system-ui, sans-serif;
+  --km-font-kana: "ud-digi-kyokasho-pro", "UD Digi Kyokasho Pro", "UD Digital Kyokasho Pro R", "Hiragino Kaku Gothic ProN", "Yu Kyokasho", "Yu Gothic", "Meiryo", "Noto Sans JP", sans-serif;
+}
+
+body {
+  font-family: var(--km-font-base);
+  color: var(--km-ink);
+  background-color: #fdf3ee;
+  background-image: none;
+  position: relative;
+  min-height: 100vh;
+}
+
+html {
+  background-color: #fdf3ee;
+  background-image: none;
+}
+
+body::before,
+body::after {
+  content: none;
+}
+
+.km-card {
+  background: var(--km-card);
+  border: var(--km-card-border, none);
+  border-radius: 1.1rem;
+  box-shadow: var(--km-card-shadow, 0 10px 24px rgba(155, 113, 138, 0.08));
+  overflow: visible;
+}
+
+.km-kana-font {
+  font-family: var(--km-font-kana);
+}
+
+.km-button-primary {
+  background: rgba(239, 177, 203, 0.22);
+  border: 1.5px solid rgba(239, 177, 203, 0.95);
+  color: var(--km-ink);
+  transition: transform 160ms ease, filter 160ms ease, box-shadow 160ms ease;
+}
+
+.km-button-primary:hover {
+  background: #ffffff;
+  border-color: rgba(239, 177, 203, 0.95);
+  filter: brightness(0.98);
+  box-shadow: 0 6px 14px rgba(239, 177, 203, 0.25);
+}
+
+.km-button-primary:active {
+  transform: translateY(1px) scale(0.99);
+}
+
+.km-button-primary:focus-visible {
+  outline: none;
+  box-shadow: 0 0 0 2px color-mix(in srgb, var(--km-pink) 40%, transparent);
+}
+
+.km-copy-button {
+  transition: color 160ms ease, transform 160ms ease, filter 160ms ease, box-shadow 160ms ease, background-color 160ms ease;
+}
+
+.km-copy-button:hover {
+  background: #ffffff;
+  color: #4d2d3d;
+  filter: brightness(0.99);
+  transform: translateY(-1px);
+  box-shadow: 0 4px 10px rgba(59, 130, 246, 0.16);
+}
+
+.km-copy-button:active {
+  transform: translateY(0);
+}
+
+.km-reveal {
+  animation: kmReveal 240ms ease-out;
+}
+
+.km-badge {
+  animation: kmPop 200ms ease-out;
+}
+
+.km-speech-bubble {
+  position: relative;
+}
+
+.km-speech-bubble::after {
+  content: "";
+  position: absolute;
+  left: -12px;
+  bottom: 16px;
+  width: 16px;
+  height: 16px;
+  transform: rotate(45deg);
+  background: var(--km-card);
+  border-left: 1px solid var(--km-border);
+  border-bottom: 1px solid var(--km-border);
+}
+
+.km-title-shimmer {
+  position: relative;
+}
+
+.km-title-shimmer::before {
+  content: "";
+  position: absolute;
+  left: 16px;
+  right: 16px;
+  bottom: 8px;
+  height: 1px;
+  background: linear-gradient(90deg, transparent 0%, rgba(239, 177, 203, 0.18) 50%, transparent 100%);
+}
+
+@keyframes kmReveal {
+  from {
+    opacity: 0;
+    transform: translateY(4px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes kmFloat {
+  0%,
+  100% {
+    transform: translate3d(0, 0, 0);
+    opacity: 0.28;
+  }
+  50% {
+    transform: translate3d(0, -10px, 0);
+    opacity: 0.36;
+  }
+}
+
+@keyframes kmPop {
+  from {
+    opacity: 0;
+    transform: translateY(2px) scale(0.94);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+@keyframes kmSplashIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes kmSplashOut {
+  from {
+    opacity: 1;
+  }
+  to {
+    opacity: 0;
+  }
+}
+
+.km-splash-overlay {
+  animation: kmSplashOut 1s ease forwards;
+  animation-delay: 3s;
+}
+
+.km-splash-image {
+  opacity: 0;
+  animation: kmSplashIn 2s ease forwards;
+}
+
+.km-splash-text {
+  opacity: 0;
+  animation: kmSplashIn 2s ease forwards;
+  animation-delay: 0.5s;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  body::before {
+    animation: kmFloat 28s ease-in-out infinite;
+  }
+
+  body::after {
+    animation: kmFloat 34s ease-in-out infinite reverse;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .km-splash-overlay,
+  .km-splash-image,
+  .km-splash-text {
+    display: none !important;
+    animation: none !important;
+  }
+
+  *,
+  *::before,
+  *::after {
+    animation: none !important;
+    transition: none !important;
+    scroll-behavior: auto !important;
+  }
+}
