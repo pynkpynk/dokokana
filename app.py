@@ -2,7 +2,7 @@ from fastapi import FastAPI, Query, HTTPException
 from pydantic import BaseModel
 from typing import List, Dict, Any
 
-from namekana import transliterate_name
+from namekana import transliterate_name, UnknownCountryError
 
 app = FastAPI(title="NameKana API", version="0.1.1")
 
@@ -15,6 +15,8 @@ class BulkIn(BaseModel):
 def transliterate(name: str = Query(..., min_length=1, max_length=200)) -> Dict[str, Any]:
     try:
         return transliterate_name(name)
+    except UnknownCountryError as e:
+        raise HTTPException(status_code=400, detail=str(e))
     except Exception as e:
         raise HTTPException(status_code=500, detail=f"internal_error:{type(e).__name__}")
 

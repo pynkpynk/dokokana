@@ -1,13 +1,14 @@
 import os
 import re
 import json
+import unicodedata
 from functools import lru_cache
 from typing import Any, Dict, Optional, Tuple
 
-import requests
-from e2k import C2K
-
-_C2K = C2K()
+try:
+    import requests
+except Exception:  # pragma: no cover - startup fallback when optional dependency is absent
+    requests = None
 
 # Env toggles
 _WIKIDATA_ENABLED = (
@@ -41,9 +42,17 @@ _DICT_CACHE_SIGNATURE = None
 _DICT_CACHE_MAP: Dict[str, str] = {}
 _DICT_CACHE_FIRST_NAME_MAP: Dict[str, str] = {}
 _DICT_CACHE_LAST_NAME_MAP: Dict[str, str] = {}
+_COUNTRY_DICT_CACHE_SIGNATURE = None
+_COUNTRY_DICT_CACHE_MAP: Dict[str, Dict[str, str]] = {}
 _WD_QID_CACHE_MAX = 2048
 _WD_QID_ALLOWED_CACHE: Dict[str, bool] = {}
 _WD_QID_KANA_CACHE: Dict[str, Optional[str]] = {}
+
+INVALID_COUNTRY_MESSAGE = "Please enter a valid country name."
+
+
+class UnknownCountryError(ValueError):
+    pass
 
 
 def kata_to_hira(text: str) -> str:
@@ -78,6 +87,88 @@ def dictionary_key(name: str) -> str:
     key = re.sub(r"[^\w\s'\-]", " ", key, flags=re.UNICODE)
     key = re.sub(r"[\s'\-]+", " ", key).strip()
     return key
+
+
+def normalize_country_key(s: str) -> str:
+    text = (s or "").strip().lower()
+    if not text:
+        return ""
+    text = unicodedata.normalize("NFKD", text)
+    text = "".join(ch for ch in text if not unicodedata.combining(ch))
+    text = re.sub(r"[^a-z0-9]", "", text)
+    return text
+
+
+def _country_dict_path() -> str:
+    base_dir = os.path.dirname(os.path.abspath(__file__))
+    return os.path.join(base_dir, "countries", "country_dictionary.json")
+
+
+def _parse_country_dictionary_value(raw_value: Any) -> Optional[Dict[str, str]]:
+    if isinstance(raw_value, str):
+        value = raw_value.strip()
+        if not value:
+            return None
+        return {"official": value, "display": value}
+
+    if not isinstance(raw_value, dict):
+        return None
+
+    official = raw_value.get("official")
+    display = raw_value.get("display")
+    if not isinstance(official, str) or not isinstance(display, str):
+        return None
+    official = official.strip()
+    display = display.strip()
+    if not official or not display:
+        return None
+    return {"official": official, "display": display}
+
+
+def _load_country_dictionary_if_needed() -> Dict[str, Dict[str, str]]:
+    global _COUNTRY_DICT_CACHE_SIGNATURE, _COUNTRY_DICT_CACHE_MAP
+
+    path = _country_dict_path()
+    try:
+        signature = (path, os.path.getmtime(path))
+    except OSError:
+        signature = None
+
+    if signature == _COUNTRY_DICT_CACHE_SIGNATURE:
+        return _COUNTRY_DICT_CACHE_MAP
+
+    loaded: Dict[str, Dict[str, str]] = {}
+    if signature is not None:
+        try:
+            with open(path, "r", encoding="utf-8") as fh:
+                payload = json.load(fh)
+            if isinstance(payload, dict):
+                for raw_key, raw_value in payload.items():
+                    if not isinstance(raw_key, str):
+                        continue
+                    key = normalize_country_key(raw_key)
+                    parsed = _parse_country_dictionary_value(raw_value)
+                    if not key or not parsed:
+                        continue
+                    loaded[key] = parsed
+        except Exception:
+            loaded = {}
+
+    _COUNTRY_DICT_CACHE_SIGNATURE = signature
+    _COUNTRY_DICT_CACHE_MAP = loaded
+    return _COUNTRY_DICT_CACHE_MAP
+
+
+def dictionary_lookup_country(name: str) -> Optional[Dict[str, str]]:
+    if _DICTIONARY_DISABLED:
+        return None
+    key = normalize_country_key(name)
+    if not key:
+        return None
+    try:
+        return _load_country_dictionary_if_needed().get(key)
+    except Exception:
+        return None
 
 
 def _dict_dir_path() -> str:
@@ -263,6 +354,8 @@ def dictionary_lookup_name(raw_name: str) -> Optional[str]:
 
 
 def _safe_get_json(url: str, params: Dict[str, Any]) -> Tuple[Optional[Dict[str, Any]], Optional[str]]:
+    if requests is None:
+        return None, "requests_unavailable"
     try:
         r = requests.get(
             url,
@@ -403,74 +496,21 @@ def wikidata_kana_label(query: str) -> Optional[str]:
     return None
 
 
-def model_katakana(token: str) -> str:
-    t = token.strip()
-    if not t:
-        return ""
-    return _C2K(t)
-
-
 def transliterate_name(name: str) -> Dict[str, Any]:
     raw = normalize_name(name)
 
-    wd = None
-    if _WIKIDATA_ENABLED:
-        try:
-            wd = wikidata_kana_label(raw)
-        except Exception:
-            wd = None
-
-    if wd:
-        katakana = wd
+    country = dictionary_lookup_country(raw)
+    if country:
+        katakana = country["display"]
         hiragana = kata_to_hira(katakana) if re.search(r"[\u30A0-\u30FF]", katakana) else katakana
         return {
             "input": raw,
             "katakana": katakana,
             "hiragana": hiragana,
-            "source": "wikidata",
-            "candidates": [],
-            "warning": None,
-        }
-
-    dict_kana = None
-    if not _DICTIONARY_DISABLED:
-        try:
-            dict_kana = dictionary_lookup_name(raw)
-        except Exception:
-            dict_kana = None
-
-    if dict_kana:
-        katakana = dict_kana
-        hiragana = kata_to_hira(katakana) if re.search(r"[\u30A0-\u30FF]", katakana) else katakana
-        return {
-            "input": raw,
-            "katakana": katakana,
-            "hiragana": hiragana,
+            "official_name": country["official"],
             "source": "dictionary",
             "candidates": [],
             "warning": None,
         }
 
-    tokens = split_tokens(raw)
-    kata_tokens = [model_katakana(t) for t in tokens]
-    katakana = " ".join([k for k in kata_tokens if k])
-    hiragana = kata_to_hira(katakana)
-
-    warning = "Heuristic transliteration; may vary by pronunciation."
-    if _WIKIDATA_ENABLED:
-        warning = warning + " (Wikidata lookup unavailable or no kana label.)"
-    else:
-        warning = warning + " (Wikidata disabled.)"
-    if _DICTIONARY_DISABLED:
-        warning = warning + " (Dictionary disabled.)"
-    else:
-        warning = warning + " (Dictionary no match.)"
-
-    return {
-        "input": raw,
-        "katakana": katakana,
-        "hiragana": hiragana,
-        "source": "e2k",
-        "candidates": [],
-        "warning": warning,
-    }
+    raise UnknownCountryError(INVALID_COUNTRY_MESSAGE)

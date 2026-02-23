@@ -5,7 +5,7 @@ import type { ReactNode } from "react";
 import "./globals.css";
 
 const appName = process.env.NEXT_PUBLIC_APP_NAME || "KanaMe";
-const description = `${appName} helps convert Western names into Japanese Kana.`;
+const description = "Turn your country name into Japanese Katakana and Hiragana.";
 
 function resolveMetadataBase(): URL {
   const fromEnv = process.env.NEXT_PUBLIC_SITE_URL?.trim();
@@ -40,7 +40,7 @@ export async function generateMetadata(): Promise<Metadata> {
       type: "website",
       images: [
         {
-          url: "/img/KanaMe-OGP.png",
+          url: "/img/DokoKana-OGP.png",
           width: 1200,
           height: 630,
         },
@@ -50,7 +50,7 @@ export async function generateMetadata(): Promise<Metadata> {
       card: "summary_large_image",
       title: appName,
       description,
-      images: ["/img/KanaMe-OGP.png"],
+      images: ["/img/DokoKana-OGP.png"],
     },
   };
 }

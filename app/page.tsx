@@ -18,7 +18,7 @@ const SPLASH_TOTAL_MS = 5000;
 
 const showDebug = process.env.NODE_ENV !== "production";
 const headerCardChrome = {
-  "--km-card-border": "1px solid rgba(238, 203, 215, 0.9)",
+  "--km-card-border": "1px solid #84c0c7",
   "--km-card-shadow": "0 12px 28px rgba(55, 56, 56, 0.12)",
 } as CSSProperties;
 
@@ -160,21 +160,21 @@ export default function HomePage() {
       <main className="mx-auto min-h-screen w-full max-w-3xl space-y-6 overflow-visible px-4 py-8 sm:px-6 lg:px-8">
         <section className="km-card rounded-3xl bg-white/85 p-6 sm:p-7" style={headerCardChrome}>
           <div className="space-y-3 text-center">
-            <h1 className="text-3xl font-bold tracking-[0.08em] text-[var(--km-ink)]">KanaMe!</h1>
+            <h1 className="text-3xl font-bold tracking-[0.08em] text-[var(--km-ink)]">DokoKana?</h1>
             <p className="text-sm text-[var(--km-ink)]/65">
               by{" "}
               <a href="https://japanotes.carrd.co/" target="_blank" rel="noreferrer noopener" className="underline">
                 JapaNotes
               </a>
             </p>
-            <p className="text-[var(--km-ink)]/85">Turn your name into Japanese Katakana and Hiragana.</p>
+            <p className="text-[var(--km-ink)]/85">Turn your country name into Japanese Katakana and Hiragana.</p>
           </div>
 
           <div className="my-5 h-px bg-[var(--km-border)]/70" />
 
           <form onSubmit={handleSingleSubmit} className="mx-auto max-w-xl space-y-3">
             <label htmlFor="single-name" className="block text-sm font-medium text-[var(--km-ink)]/85">
-              Enter your name
+              Enter your country
             </label>
             <input
               id="single-name"
@@ -183,7 +183,7 @@ export default function HomePage() {
               maxLength={MAX_NAME_LENGTH}
               onChange={(event) => setSingleName(event.target.value)}
               className="w-full rounded-xl border border-[#3b82f680] bg-white px-3 py-2 outline-none ring-2 ring-[#3b82f680]/15 transition focus:ring-[#3b82f680]/30"
-              placeholder="e.g. Emily Smith"
+              placeholder="e.g. Japan"
             />
             <div className="flex justify-center pt-1">
               <button
@@ -196,6 +196,10 @@ export default function HomePage() {
             </div>
           </form>
 
+          <p className="mx-auto mt-3 max-w-xl text-center text-xs text-[var(--km-ink)]/65">
+            First request may take longer (up to about 1 minute) while the server wakes up.
+          </p>
+
           {singleError ? <p className="mt-4 rounded-lg bg-rose-50 px-3 py-2 text-sm text-rose-700">{singleError}</p> : null}
         </section>
 
@@ -204,14 +208,14 @@ export default function HomePage() {
             <div className="relative rounded-[2rem] bg-[#fffdfb] p-6 shadow-[0_16px_34px_rgba(55,56,56,0.12)] sm:p-8">
               <div aria-hidden="true" className="pointer-events-none absolute inset-3 rounded-[1.5rem] border border-[var(--km-border)]/55" />
               <Image
-                src="/img/KanaMe-stamp.png"
-                alt="KanaMe stamp"
+                src="/img/DokoKana-stamp.png"
+                alt="DokoKana stamp"
                 width={136}
                 height={136}
                 className="pointer-events-none absolute -right-7 -top-8 z-20 h-28 w-28 object-contain opacity-95 drop-shadow-[0_6px_12px_rgba(55,56,56,0.16)] sm:-right-5 sm:-top-6 sm:h-36 sm:w-36"
               />
 
-              <div className="relative z-10 mb-3 text-center text-xs font-semibold tracking-[0.14em] text-[var(--km-ink)]/55">My name is</div>
+              <div className="relative z-10 mb-3 text-center text-xs font-semibold tracking-[0.14em] text-[var(--km-ink)]/55">I'm from</div>
 
               <div className="relative z-10 rounded-[1.7rem] bg-[#fffdfb] px-5 py-6 shadow-none sm:px-8 sm:py-9">
                 <p className="km-kana-font text-center text-3xl font-semibold leading-tight text-[var(--km-ink)] sm:text-[2.6rem]">{singleResult.katakana || "-"}</p>

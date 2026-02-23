@@ -78,9 +78,8 @@ export default function ShareButtons({ name, katakana, hiragana, script, trigger
 
   const payload = useMemo(() => {
     const kana = script === "katakana" ? katakana : hiragana;
-    const scriptLabel = script === "katakana" ? "Katakana" : "Hiragana";
     const shareUrl = buildShareUrl(name, kana, script);
-    const text = `I can write my name in Japanese now･:*+.\\(( °ω° ))/.:+${kana} (${scriptLabel})\n${shareUrl}`;
+    const text = `I can write my country name in Japanese now･:*+.\\(( °ω° ))/.:+"${katakana}" (Katakana)\n${shareUrl}`;
     return { shareUrl, text };
   }, [hiragana, katakana, name, script]);
 
@@ -108,7 +107,7 @@ export default function ShareButtons({ name, katakana, hiragana, script, trigger
   }, [open]);
 
   const handleCopyLink = async () => {
-    const ok = await copyToClipboard(payload.shareUrl);
+    const ok = await copyToClipboard(payload.text);
     if (ok) {
       setCopied(true);
       setTimeout(() => setCopied(false), 1500);
@@ -172,7 +171,11 @@ export default function ShareButtons({ name, katakana, hiragana, script, trigger
               </button>
               <button
                 type="button"
-                onClick={() => openShareUrl(`https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(payload.shareUrl)}`)}
+                onClick={() =>
+                  openShareUrl(
+                    `https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(payload.shareUrl)}&quote=${encodeURIComponent(payload.text)}`,
+                  )
+                }
                 className="km-copy-button inline-flex h-10 items-center justify-center gap-2 rounded-full border border-[#3b82f680] bg-[#eef4ff] px-4 text-sm font-medium text-[var(--km-ink)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--km-pink)]/40"
               >
                 <img src="/icons/facebook.svg" alt="" aria-hidden="true" className="h-4 w-4" />

@@ -1,10 +1,12 @@
 import type { NextRequest } from "next/server";
-import ogp from "../../../img/KanaMe-OGP.png";
-import stamp from "../../../img/KanaMe-stamp.png";
+import ogp from "../../../img/DokoKana-OGP.png";
+import stamp from "../../../img/DokoKana-stamp.png";
 
 type StaticImageImport = { src: string } | string;
 
 const WHITELIST: Record<string, StaticImageImport> = {
+  "DokoKana-stamp.png": stamp,
+  "DokoKana-OGP.png": ogp,
   "KanaMe-stamp.png": stamp,
   "KanaMe-OGP.png": ogp,
 };

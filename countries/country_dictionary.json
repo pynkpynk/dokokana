@@ -1,0 +1,462 @@
+{
+  "afghanistan": "アフガニスタン",
+  "alandislands": {
+    "display": "オーランドショトウ",
+    "official": "オーランド諸島"
+  },
+  "albania": "アルバニア",
+  "algeria": "アルジェリア",
+  "americansamoa": {
+    "display": "サモア",
+    "official": "米領サモア"
+  },
+  "andorra": "アンドラ",
+  "angola": "アンゴラ",
+  "anguilla": "アンギラ",
+  "antarctica": {
+    "display": "ナンキョク",
+    "official": "南極"
+  },
+  "antiguabarbuda": "アンティグア・バーブーダ",
+  "argentina": "アルゼンチン",
+  "armenia": "アルメニア",
+  "aruba": "アルバ",
+  "australia": "オーストラリア",
+  "austria": "オーストリア",
+  "azerbaijan": "アゼルバイジャン",
+  "bahamas": "バハマ",
+  "bahrain": "バーレーン",
+  "bangladesh": "バングラデシュ",
+  "barbados": "バルバドス",
+  "belarus": "ベラルーシ",
+  "belgium": "ベルギー",
+  "belize": "ベリーズ",
+  "benin": "ベナン",
+  "bermuda": "バミューダ",
+  "bhutan": "ブータン",
+  "bolivia": "ボリビア",
+  "bosniaherzegovina": "ボスニア・ヘルツェゴビナ",
+  "botswana": "ボツワナ",
+  "bouvetisland": {
+    "display": "ブーベトウ",
+    "official": "ブーベ島"
+  },
+  "brazil": "ブラジル",
+  "britain": "イギリス",
+  "britishindianoceanterritory": {
+    "display": "エイリョウインド",
+    "official": "英領インド洋地域"
+  },
+  "britishvirginislands": {
+    "display": "ヴァージンショトウ",
+    "official": "英領ヴァージン諸島"
+  },
+  "brunei": "ブルネイ",
+  "bulgaria": "ブルガリア",
+  "burkinafaso": "ブルキナファソ",
+  "burundi": "ブルンジ",
+  "cambodia": "カンボジア",
+  "cameroon": "カメルーン",
+  "canada": "カナダ",
+  "capeverde": "カーボベルデ",
+  "caribbeannetherlands": {
+    "display": "オランダリョウカリブ",
+    "official": "オランダ領カリブ"
+  },
+  "caymanislands": {
+    "display": "ケイマンショトウ",
+    "official": "ケイマン諸島"
+  },
+  "centralafricanrepublic": {
+    "display": "チュウオウアフリカ",
+    "official": "中央アフリカ共和国"
+  },
+  "chad": "チャド",
+  "chile": "チリ",
+  "china": {
+    "display": "チュウゴク",
+    "official": "中国"
+  },
+  "christmasisland": {
+    "display": "クリスマストウ",
+    "official": "クリスマス島"
+  },
+  "cocoskeelingislands": {
+    "display": "ココスキーリングショトウ",
+    "official": "ココス(キーリング)諸島"
+  },
+  "colombia": "コロンビア",
+  "comoros": "コモロ",
+  "congobrazzaville": {
+    "display": "コンゴ・ブラザビル",
+    "official": "コンゴ共和国(ブラザビル)"
+  },
+  "congokinshasa": {
+    "display": "コンゴ・キンシャサ",
+    "official": "コンゴ民主共和国(キンシャサ)"
+  },
+  "cookislands": {
+    "display": "クックショトウ",
+    "official": "クック諸島"
+  },
+  "costarica": "コスタリカ",
+  "cotedivoire": "コートジボワール",
+  "croatia": "クロアチア",
+  "cuba": "キューバ",
+  "curacao": "キュラソー",
+  "cyprus": "キプロス",
+  "czechia": "チェコ",
+  "czechrepublic": "チェコ",
+  "denmark": "デンマーク",
+  "djibouti": "ジブチ",
+  "dominica": {
+    "display": "ドミニカコク",
+    "official": "ドミニカ国"
+  },
+  "dominicanrepublic": {
+    "display": "ドミニカ",
+    "official": "ドミニカ共和国"
+  },
+  "ecuador": "エクアドル",
+  "egypt": "エジプト",
+  "elsalvador": "エルサルバドル",
+  "equatorialguinea": {
+    "display": "セキドウギニア",
+    "official": "赤道ギニア"
+  },
+  "eritrea": "エリトリア",
+  "estonia": "エストニア",
+  "eswatini": "エスワティニ",
+  "ethiopia": "エチオピア",
+  "falklandislands": {
+    "display": "フォークランドショトウ",
+    "official": "フォークランド諸島"
+  },
+  "faroeislands": {
+    "display": "フェローショトウ",
+    "official": "フェロー諸島"
+  },
+  "fiji": "フィジー",
+  "finland": "フィンランド",
+  "france": "フランス",
+  "frenchguiana": {
+    "display": "ブツリョウギアナ",
+    "official": "仏領ギアナ"
+  },
+  "frenchpolynesia": {
+    "display": "ブツリョウポリネシア",
+    "official": "仏領ポリネシア"
+  },
+  "frenchsouthernterritories": {
+    "display": "ブツリョウキョクナンショトウ",
+    "official": "仏領極南諸島"
+  },
+  "gabon": "ガボン",
+  "gambia": "ガンビア",
+  "gb": {
+    "display": "イギリス",
+    "official": "イギリス"
+  },
+  "georgia": "ジョージア",
+  "germany": "ドイツ",
+  "ghana": "ガーナ",
+  "gibraltar": "ジブラルタル",
+  "greatbritain": "イギリス",
+  "greece": "ギリシャ",
+  "greenland": "グリーンランド",
+  "grenada": "グレナダ",
+  "guadeloupe": "グアドループ",
+  "guam": "グアム",
+  "guatemala": "グアテマラ",
+  "guernsey": "ガーンジー",
+  "guinea": "ギニア",
+  "guineabissau": "ギニアビサウ",
+  "guyana": "ガイアナ",
+  "haiti": "ハイチ",
+  "heardmcdonaldislands": {
+    "display": "ハードトウ・マクドナルドショトウ",
+    "official": "ハード島・マクドナルド諸島"
+  },
+  "honduras": "ホンジュラス",
+  "hongkong": {
+    "display": "ホンコン",
+    "official": "香港"
+  },
+  "hongkongsarchina": {
+    "display": "ホンコン",
+    "official": "香港"
+  },
+  "hungary": "ハンガリー",
+  "iceland": "アイスランド",
+  "india": "インド",
+  "indonesia": "インドネシア",
+  "iran": "イラン",
+  "iraq": "イラク",
+  "ireland": "アイルランド",
+  "isleofman": {
+    "display": "マントウ",
+    "official": "マン島"
+  },
+  "israel": "イスラエル",
+  "italy": "イタリア",
+  "ivorycoast": "コートジボワール",
+  "jamaica": "ジャマイカ",
+  "japan": {
+    "display": "ニホン",
+    "official": "日本"
+  },
+  "jersey": "ジャージー",
+  "jordan": "ヨルダン",
+  "kazakhstan": "カザフスタン",
+  "kenya": "ケニア",
+  "kiribati": "キリバス",
+  "korea": {
+    "display": "カンコク",
+    "official": "韓国"
+  },
+  "kuwait": "クウェート",
+  "kyrgyzstan": "キルギス",
+  "laos": "ラオス",
+  "latvia": "ラトビア",
+  "lebanon": "レバノン",
+  "lesotho": "レソト",
+  "liberia": "リベリア",
+  "libya": "リビア",
+  "liechtenstein": "リヒテンシュタイン",
+  "lithuania": "リトアニア",
+  "luxembourg": "ルクセンブルク",
+  "macao": {
+    "display": "マカオ",
+    "official": "マカオ"
+  },
+  "macaosarchina": {
+    "display": "マカオ",
+    "official": "マカオ"
+  },
+  "macau": {
+    "display": "マカオ",
+    "official": "マカオ"
+  },
+  "madagascar": "マダガスカル",
+  "malawi": "マラウイ",
+  "malaysia": "マレーシア",
+  "maldives": "モルディブ",
+  "mali": "マリ",
+  "malta": "マルタ",
+  "marshallislands": {
+    "display": "マーシャルショトウ",
+    "official": "マーシャル諸島"
+  },
+  "martinique": "マルティニーク",
+  "mauritania": "モーリタニア",
+  "mauritius": "モーリシャス",
+  "mayotte": "マヨット",
+  "mexico": "メキシコ",
+  "micronesia": {
+    "display": "ミクロネシア",
+    "official": "ミクロネシア連邦"
+  },
+  "moldova": "モルドバ",
+  "monaco": "モナコ",
+  "mongolia": "モンゴル",
+  "montenegro": "モンテネグロ",
+  "montserrat": "モントセラト",
+  "morocco": "モロッコ",
+  "mozambique": "モザンビーク",
+  "myanmarburma": {
+    "display": "ミャンマー",
+    "official": "ミャンマー (ビルマ)"
+  },
+  "namibia": "ナミビア",
+  "nauru": "ナウル",
+  "nepal": "ネパール",
+  "netherlands": "オランダ",
+  "newcaledonia": "ニューカレドニア",
+  "newzealand": "ニュージーランド",
+  "nicaragua": "ニカラグア",
+  "niger": "ニジェール",
+  "nigeria": "ナイジェリア",
+  "niue": "ニウエ",
+  "norfolkisland": {
+    "display": "ノーフォークトウ",
+    "official": "ノーフォーク島"
+  },
+  "northernmarianaislands": {
+    "display": "キタマリアナショトウ",
+    "official": "北マリアナ諸島"
+  },
+  "northkorea": {
+    "display": "キタチョウセン",
+    "official": "北朝鮮"
+  },
+  "northmacedonia": {
+    "display": "キタマケドニア",
+    "official": "北マケドニア"
+  },
+  "norway": "ノルウェー",
+  "oman": "オマーン",
+  "pakistan": "パキスタン",
+  "palau": "パラオ",
+  "palestinianterritories": {
+    "display": "パレスチナジチク",
+    "official": "パレスチナ自治区"
+  },
+  "panama": "パナマ",
+  "papuanewguinea": "パプアニューギニア",
+  "paraguay": "パラグアイ",
+  "peru": "ペルー",
+  "philippines": "フィリピン",
+  "pitcairnislands": {
+    "display": "ピトケアンショトウ",
+    "official": "ピトケアン諸島"
+  },
+  "poland": "ポーランド",
+  "portugal": "ポルトガル",
+  "puertorico": "プエルトリコ",
+  "qatar": "カタール",
+  "reunion": "レユニオン",
+  "romania": "ルーマニア",
+  "russia": {
+    "display": "ロシア",
+    "official": "ロシア"
+  },
+  "russianfederation": {
+    "display": "ロシア",
+    "official": "ロシア"
+  },
+  "rwanda": "ルワンダ",
+  "samoa": "サモア",
+  "sanmarino": "サンマリノ",
+  "saotomeprincipe": "サントメ・プリンシペ",
+  "saudiarabia": "サウジアラビア",
+  "senegal": "セネガル",
+  "serbia": "セルビア",
+  "seychelles": "セーシェル",
+  "sierraleone": "シエラレオネ",
+  "singapore": "シンガポール",
+  "sintmaarten": "シント・マールテン",
+  "slovakia": "スロバキア",
+  "slovenia": "スロベニア",
+  "solomonislands": {
+    "display": "ソロモンショトウ",
+    "official": "ソロモン諸島"
+  },
+  "somalia": "ソマリア",
+  "southafrica": {
+    "display": "ミナミアフリカ",
+    "official": "南アフリカ"
+  },
+  "southgeorgiasouthsandwichislands": {
+    "display": "サウスジョージア・サウスサンドウィッチショトウ",
+    "official": "サウスジョージア・サウスサンドウィッチ諸島"
+  },
+  "southkorea": {
+    "display": "カンコク",
+    "official": "韓国"
+  },
+  "southsudan": {
+    "display": "ミナミスーダン",
+    "official": "南スーダン"
+  },
+  "spain": "スペイン",
+  "srilanka": "スリランカ",
+  "stbarthelemy": "サン・バルテルミー",
+  "sthelena": "セントヘレナ",
+  "stkittsnevis": "セントクリストファー・ネーヴィス",
+  "stlucia": "セントルシア",
+  "stmartin": "サン・マルタン",
+  "stpierremiquelon": {
+    "display": "サンピエールシマ・ミクロントウ",
+    "official": "サンピエール島・ミクロン島"
+  },
+  "stvincentgrenadines": {
+    "display": "セントビンセントオヨビグレナディーンショトウ",
+    "official": "セントビンセント及びグレナディーン諸島"
+  },
+  "sudan": "スーダン",
+  "suriname": "スリナム",
+  "svalbardjanmayen": {
+    "display": "スバールバルショトウ・ヤンマイエントウ",
+    "official": "スバールバル諸島・ヤンマイエン島"
+  },
+  "sweden": "スウェーデン",
+  "switzerland": "スイス",
+  "syria": "シリア",
+  "taiwan": {
+    "display": "タイワン",
+    "official": "台湾"
+  },
+  "tajikistan": "タジキスタン",
+  "tanzania": "タンザニア",
+  "thailand": "タイ",
+  "timorleste": {
+    "display": "ヒガシティモール",
+    "official": "東ティモール"
+  },
+  "togo": "トーゴ",
+  "tokelau": "トケラウ",
+  "tonga": "トンガ",
+  "trinidadtobago": "トリニダード・トバゴ",
+  "tunisia": "チュニジア",
+  "turkey": "トルコ",
+  "turkiye": "トルコ",
+  "turkmenistan": "トルクメニスタン",
+  "turkscaicosislands": {
+    "display": "タークス・カイコスショトウ",
+    "official": "タークス・カイコス諸島"
+  },
+  "tuvalu": "ツバル",
+  "uae": {
+    "display": "アラブ",
+    "official": "アラブ首長国連邦"
+  },
+  "uganda": "ウガンダ",
+  "uk": "イギリス",
+  "ukraine": "ウクライナ",
+  "unitedarabemirates": {
+    "display": "アラブ",
+    "official": "アラブ首長国連邦"
+  },
+  "unitedkingdom": "イギリス",
+  "unitedstates": {
+    "display": "アメリカ",
+    "official": "アメリカ合衆国"
+  },
+  "unitedstatesofamerica": {
+    "display": "アメリカ",
+    "official": "アメリカ合衆国"
+  },
+  "uruguay": "ウルグアイ",
+  "us": {
+    "display": "アメリカ",
+    "official": "アメリカ合衆国"
+  },
+  "usa": {
+    "display": "アメリカ",
+    "official": "アメリカ合衆国"
+  },
+  "usoutlyingislands": {
+    "display": "ゴウシュウコクリョウユウショウリトウ",
+    "official": "合衆国領有小離島"
+  },
+  "usvirginislands": {
+    "display": "ベイリョウヴァージンショトウ",
+    "official": "米領ヴァージン諸島"
+  },
+  "uzbekistan": "ウズベキスタン",
+  "vanuatu": "バヌアツ",
+  "vaticancity": {
+    "display": "バチカンシコク",
+    "official": "バチカン市国"
+  },
+  "venezuela": "ベネズエラ",
+  "vietnam": "ベトナム",
+  "wallisfutuna": "ウォリス・フツナ",
+  "westernsahara": {
+    "display": "ニシサハラ",
+    "official": "西サハラ"
+  },
+  "yemen": "イエメン",
+  "zambia": "ザンビア",
+  "zimbabwe": "ジンバブエ"
+}
