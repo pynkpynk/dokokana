@@ -11,6 +11,11 @@ class BulkIn(BaseModel):
     names: List[str]
 
 
+@app.get("/healthz")
+def healthz() -> Dict[str, bool]:
+    return {"ok": True}
+
+
 @app.get("/transliterate")
 def transliterate(name: str = Query(..., min_length=1, max_length=200)) -> Dict[str, Any]:
     try:
