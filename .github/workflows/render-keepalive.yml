@@ -1,0 +1,54 @@
+name: Render Keepalive
+
+on:
+  workflow_dispatch:
+  schedule:
+    - cron: "10,24,38,52 0-5,16-21 * * *"
+
+concurrency:
+  group: render-keepalive-dokokana
+  cancel-in-progress: true
+
+jobs:
+  ping:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - name: Ping Render health endpoint
+        env:
+          TARGET_URL: ${{ secrets.RENDER_HEALTHCHECK_URL }}
+        run: |
+          set -euo pipefail
+
+          if [ -z "${TARGET_URL}" ]; then
+            echo "RENDER_HEALTHCHECK_URL is not set"
+            exit 1
+          fi
+
+          ua="DokoKana-Render-Keepalive-GHA/1.0"
+          attempts=2
+          delay_seconds=5
+
+          for attempt in $(seq 1 "${attempts}"); do
+            echo "Attempt ${attempt}/${attempts}: ${TARGET_URL}"
+
+            status_code=$(curl -sS -L -o /dev/null \
+              -H "User-Agent: ${ua}" \
+              --connect-timeout 10 \
+              --max-time 30 \
+              -w "%{http_code}" \
+              "${TARGET_URL}" || true)
+
+            if [ -n "${status_code}" ] && [ "${status_code}" -ge 200 ] && [ "${status_code}" -lt 400 ]; then
+              echo "Keepalive ping succeeded with HTTP ${status_code}"
+              exit 0
+            fi
+
+            echo "Keepalive ping failed with HTTP ${status_code:-<none>}"
+            if [ "${attempt}" -lt "${attempts}" ]; then
+              sleep "${delay_seconds}"
+            fi
+          done
+
+          echo "Keepalive ping failed after ${attempts} attempts"
+          exit 1
